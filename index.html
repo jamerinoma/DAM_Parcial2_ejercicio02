@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https: data:; connect-src https://www.omdbapi.com; object-src 'none'"
+    />
+    <title>Catálogo de Películas</title>
+    <link rel="icon" href="assets/icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="encabezado">
+      <div class="contenedor">
+        <p class="etiqueta">Consulta de títulos con OMDb</p>
+        <h1>Catálogo de Películas</h1>
+        <p>Busca películas y series por nombre, tipo y año de estreno.</p>
+        <p>Desarrollado por Jaime Merino.</p>
+      </div>
+    </header>
+
+    <main class="contenedor">
+      <form id="formulario" class="filtros">
+        <div class="campo busqueda">
+          <label for="busqueda">Título</label>
+          <input
+            id="busqueda"
+            type="search"
+            placeholder="Ejemplo: rugrats"
+            value="rugrats"
+            required
+          />
+        </div>
+        <div class="campo">
+          <label for="tipo">Tipo</label>
+          <select id="tipo">
+            <option value="">Todos</option>
+            <option value="movie">Película</option>
+            <option value="series">Serie</option>
+            <option value="episode">Episodio</option>
+          </select>
+        </div>
+        <div class="campo anio">
+          <label for="anio">Año</label>
+          <input
+            id="anio"
+            type="number"
+            min="1888"
+            max="2099"
+            placeholder="Todos"
+          />
+        </div>
+        <button id="buscar" type="submit">Buscar</button>
+      </form>
+
+      <div class="barra">
+        <h2>Resultados</h2>
+        <span id="total">Consultando información...</span>
+      </div>
+
+      <p id="loading" class="mensaje" role="status" hidden>
+        Buscando títulos...
+      </p>
+      <p id="error" class="mensaje error" role="alert" hidden></p>
+      <div id="resultados" class="resultados"></div>
+
+      <template id="template-pelicula">
+        <article class="card">
+          <div class="caratula">
+            <img alt="" loading="lazy" hidden />
+            <span class="sin-imagen" hidden>Sin imagen</span>
+          </div>
+          <div class="descripcion">
+            <h3></h3>
+            <p class="datos"></p>
+          </div>
+        </article>
+      </template>
+
+      <nav class="paginacion" aria-label="Páginas de resultados">
+        <button id="anterior" type="button" disabled>Anterior</button>
+        <span id="pagina">Página 1</span>
+        <button id="siguiente" type="button" disabled>Siguiente</button>
+      </nav>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

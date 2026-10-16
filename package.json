@@ -1,0 +1,14 @@
+{
+  "name": "catalogo-peliculas",
+  "productName": "Catálogo de Películas",
+  "version": "1.0.0",
+  "description": "Búsqueda de películas y series usando OMDb y Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^44.7.2"
+  }
+}
